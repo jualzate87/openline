@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "open-line",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["/Users/jalzate/Claude/Open Line/.claude/start-dev.sh"],
+      "port": 3004,
+      "autoPort": false
+    }
+  ]
+}
