@@ -15,20 +15,21 @@ export default function FeedbackCard() {
     setError(null);
 
     try {
-      const res = await fetch("/api/submit", {
+      // Submit directly to Google Forms
+      const formUrl =
+        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeCarjjO8I2MxzflwBNuCxSD5OZz_k_zIPM1HaApbvvEfGamg/formResponse";
+      const entryId = "849768593"; // Entry ID for "What's on your mind?" field
+
+      const formData = new URLSearchParams();
+      formData.append(`entry.${entryId}`, message.trim());
+
+      const res = await fetch(formUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: formData.toString(),
+        mode: "no-cors", // Bypass CORS restrictions
       });
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(
-          (data as { error?: string }).error ||
-            "Something went wrong. Please try again."
-        );
-      }
-
+      // With no-cors, we can't check the response, so we'll assume success
       setStatus("success");
     } catch (err) {
       setError(
