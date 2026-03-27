@@ -25,6 +25,9 @@ export default function FeedbackCard() {
 
       const res = await fetch(formUrl, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: formData.toString(),
         mode: "no-cors", // Bypass CORS restrictions
       });
