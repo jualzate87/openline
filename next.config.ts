@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/Openline",
+  basePath: "/pages/jalzate/Openline",
   images: {
     unoptimized: true,
   },
